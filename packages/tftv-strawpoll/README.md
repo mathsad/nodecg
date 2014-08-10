@@ -1,9 +1,8 @@
-#toth-lowerthird
-A lowerthird with SFX. Title and body can be set via the dashboard. Can be triggered to show and hide manually or on a timer.
+#tftv-strawpoll
+A method of displaying strawpoll.me for the purpose of increasing stream interactivity.
 
 ### Usage
 Install to nodecg/packages/
 
 ### Credits
-[Alex "Lange" Van Camp](http://alexvan.camp), lead programmer & designer of [toth-overlay](https://github.com/Langeh/toth-overlay), from which this package is taken
-[Anthony "Airon" Oetzmann](http://aironaudio.weebly.com/), sound designer  
+[Math Sad](http://www.mathsad.com), lead programmer and designer
