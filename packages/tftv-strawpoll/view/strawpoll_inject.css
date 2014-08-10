@@ -1,0 +1,14 @@
+#bodyContainer {
+		/*-vendor-animation-duration: 3s;*/
+		-vendor-animation-delay: 2s;
+		-vendor-animation-iteration-count: infinite;
+	}
+	
+.pollOption > div > span:nth-child(2),
+    #footer {
+        display:none!important;
+    }
+	
+	#results {
+        max-width: 640px!important;
+    }

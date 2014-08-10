@@ -1,0 +1,13 @@
+{
+  "name": "tftv-strawpoll",
+  "version": "0.0.1",
+  "homepage": "http://www.mathsad.com/",
+  "authors": [
+    "Math Sad <me@mathsad.com>"
+  ],
+  "description": "Displays strawpoll.me in a compact and simple way for the purpose of increasing stream/viewer interactivity.",
+  "resolutions": [
+    "720p"
+  ],
+  "license": "MIT"
+}

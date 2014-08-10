@@ -6,6 +6,7 @@ var express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
     file = require('file'),
+	jsdom = require('jsdom'), // added to inject css into pages for display
     fs = require('fs'),
     passport = require('passport'),
     SteamStrategy = require('passport-steam').Strategy,
@@ -141,6 +142,29 @@ app.get('/dashboard', ensureAuthenticated, function(req, res) {
 app.get('/nodecg.js', function(req, res) {
   res.render('views/js/nodecg.ejs', {host: config.host, port: config.port})
 });
+
+app.get('/getstrawpoll*', function(req, res){ // nts: find a way to do this within packages, works for now but would be preferred
+        var pollId = req.query.id;
+        var domain = "http://strawpoll.me/";
+        var page = domain+'embed_1/'+pollId+'/r';
+        jsdom.env(
+            page,
+            ["http://code.jquery.com/jquery.js"],
+            function (errors, window) {
+                if(!errors){
+                    var absoluteWindow = rewrite_dom(window, domain);
+                    var $ = absoluteWindow.jQuery;
+                    $('<link>').appendTo($('head')).attr({href:'http://'+config.host+':'+config.port+'/packages/tftv-strawpoll/view/strawpoll_inject.css', rel:'stylesheet', type:"text/css"});
+                    res.write(absoluteWindow.document.innerHTML);
+                    res.end();
+                }
+                else {
+                    res.send('<h1>Error:</h1><br />'+errors);
+                }
+            }
+        );
+	});
+
 
 /**
  * Login page for protected views
